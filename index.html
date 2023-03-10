@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gates</title>
+    <link href="gates_style.css" rel="stylesheet">
+    <link href="page_style.css" rel="stylesheet">
+    <link href="text_style.css" rel="stylesheet">
+    <link rel="stylesheet" href="fontawesome-free-6.2.1-web/fontawesome-free-6.2.1-web/css/all.css">
+</head>
+
+<body >
+
+    <div class="main center-div">
+        <div class="title">
+            <h1 class="title-text text-center">Gates training</h1>
+        </div>
+
+        <div class="settings-bar">
+            <div class="flex settings-bar-inner">
+                <div class="button flex">
+                    <div id="restart" class="small-icons">
+                        <i class="fa-solid fa-repeat fa-1x"></i>
+                    </div>
+                    <div class="circle start">
+                        <div class="center-div fit-content center-start padding-start-icon">
+                            <i class="fa-sharp fa-solid fa-play fa-3x"></i>
+                        </div>
+                    </div>
+                    <div id="one-step" class="small-icons">
+                        <i class="fa-solid fa-forward-step fa-1"></i>
+                    </div>
+                </div>
+                <div class="epoch">
+                    <label for="epoch">Epoch</label>
+                    <div id="epoch">000</div>
+                </div>
+                <div class="gate select-input">
+                    <label for="gate">Gate</label><br>
+                    <select id="gate">
+                        <option value="not" selected="selected">NOT</option>
+                        <option value="and">AND</option>
+                        <option value="nand">NAND</option>
+                        <option value="or">OR</option>
+                        <option value="nor">NOR</option>
+                        <option value="xor">XOR</option>
+                        <option value="xnor">XNOR</option>
+                    </select>
+                </div>
+                <div class="learning-rate select-input">
+                    <label for="learning-rate">Learning rate</label><br>
+                    <select id="learning-rate">
+                        <option value="0.00001">0.00001</option>
+                        <option value="0.0001">0.0001</option>
+                        <option value="0.001">0.001</option>
+                        <option value="0.003">0.003</option>
+                        <option value="0.01">0.01</option>
+                        <option value="0.03" selected="selected">0.03</option>
+                        <option value="0.1">0.1</option>
+                        <option value="0.3">0.3</option>
+                        <option value="1">1</option>
+                        <option value="3">3</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+                <div id="activation-section-hidden" class="activation select-input hidden">
+                    <label for="activation">Activation hidden</label><br>
+                    <select id="activation-hidden">
+                        <option value="relu">ReLU</option>
+                        <option value="tanh" selected="selected">Tanh</option>
+                        <option value="sigmoid">Sigmoid</option>
+                        <option value="linear">Linear</option>
+                    </select>
+                </div>
+                <div id="activation-section-output" class="activation select-input hidden">
+                    <label for="activation">Activation output</label><br>
+                    <select id="activation-output">
+                        <option value="relu">ReLU</option>
+                        <option value="tanh" selected="selected">Tanh</option>
+                        <option value="sigmoid">Sigmoid</option>
+                        <option value="linear">Linear</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid stats center-div">
+            <div class="center-div">
+                <div class="error">
+                    <div>
+                        <label for="error-criterion">
+                            Error criterion :
+                        </label>
+                        <select id="error-criterion" class="select-input-error">
+                            <option value="MSE">Mean squared error</option>
+                            <option value="SSE">Sum squared error</option>
+                        </select>
+                    </div>
+                    <div>
+                        <div id="SSE">SSE = 0</div>
+                        <div id="MSE">MSE = 0</div>
+                        <label for="value-stop">Value : </label>
+                        <input id="value-stop" type="number" name="value-stop" onkeypress="return onlyNumberKey(event)">
+                        <button id="SSE-MSE">Add</button>
+                        <button id="SSE-MSE-delete">Delete</button>
+                        <div id="is-added-SSE">No stoping value added for SSE</div>
+                        <div id="is-added-MSE">No stoping value added for MSE</div>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="select-no-epoch">Number of epoch : </label>
+                    <input id="select-no-epoch" type="number" name="select-no-epoch"
+                        onkeypress="return onlyNumberKey(event)">
+                    <button id="run-epoch">Run</button>
+                </div>
+
+                <div class="flex" style="margin-top: 10px;">
+                    <div class="center-div">
+                        <label for="input1-one">Input 1 : </label>
+                        <button id="input1-one">1</button>
+                        <button id="input1-zero">0</button> <br>
+                        <label for="input2-one">Input 2 : </label>
+                        <button id="input2-one">1</button>
+                        <button id="input2-zero">0</button>
+                    </div>
+                    <div class="center-div">
+                        <div id="input1-value">Input 1 : </div>
+                        <div id="input2-value">Input 2 : </div>
+                        <div id="output-value">Output  : </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="lines">
+                <svg width="400" height="400">
+                    <defs>
+                        <linearGradient id="colored-line" x1="0" y1="0" x2="100%" y2="0">
+                            <stop offset="0%" style="stop-color:orange; stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:blue; stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <!-- <rect width="400" height="400" stroke= "white" fill="url(#colored-line)"/> -->
+                    <line x1="30" y1="0" x2="30" y2="400" stroke="black" stroke-width="3px"
+                        vector-effect="non-scaling-stroke">
+                    </line>
+                    <line x1="0" y1="370" x2="400" y2="370" stroke="black" stroke-width="3px"
+                        vector-effect="non-scaling-stroke">
+                    </line>
+                    <text font-size="20" font-family="Verdana" x="0" y="30">X2</text>
+                    <text font-size="20" font-family="Verdana" x="360" y="390">X1</text>
+                    <line id="answer-line" x1="0" y1="370" x2="400" y2="370" stroke="black" stroke-width="3px"
+                        vector-effect="non-scaling-stroke">
+                    </line>
+                    <line id="answer-line-x" x1="0" y1="370" x2="400" y2="370" stroke="black" stroke-width="3px"
+                        vector-effect="non-scaling-stroke">
+                    </line>
+                    <circle id="one-zero" cx="30" cy="120" r="10" stroke="black" stroke-width="4" fill="" />
+                    <circle id="zero-zero" cx="30" cy="370" r="10" stroke="black" stroke-width="4" fill="" />
+                    <circle id="one-one" cx="280" cy="120" r="10" stroke="black" stroke-width="4" fill="" />
+                    <circle id="zero-one" cx="280" cy="370" r="10" stroke="black" stroke-width="4" fill="white" />
+                </svg>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    <script src="gates.js"></script>
+</body>
+
+</html>

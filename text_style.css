@@ -1,0 +1,26 @@
+:root{
+    --title-font-size: 60px;
+    --settings-feilds-font-size: 30px; 
+    --epoch-font-size: 40px;
+}
+
+.title-text{
+    font-size: var(--title-font-size);
+}
+
+.text-center{
+    text-align: center;
+}
+
+.settings div{
+    font-size: var(--settings-feilds-font-size);
+}
+
+.settings > div > div > label {
+    color: lightgray;
+}
+
+.epoch div{
+    font-size: var(--epoch-font-size);
+}
+

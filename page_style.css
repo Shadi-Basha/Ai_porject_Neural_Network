@@ -1,0 +1,148 @@
+:root{
+    --background-color: lightblue;
+    --main-width: 100%;
+    --setting-bar-color: white;
+    --setting-bar-hight: 120px; 
+    --start-button-width: 75px;
+    --start-button-color: lightblue;
+    --select-width: 90px;
+    --select-error-width: 150px;
+    --lines-width: 400px;
+    --lines-hight: 400px;
+    --lines-color: white;
+    --stats-margin-top: 30px;
+    --inner-width: 800px;
+}
+
+body{
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+.center-div{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main{
+    width: var(--main-width);
+}
+
+.flex{
+    display: flex;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.fit-content{
+    width: fit-content;
+}
+
+.title{
+    grid-column: 1/3;
+}
+
+.settings-bar{
+    background-color: var(--setting-bar-color);
+    height: var(--setting-bar-hight);
+}
+
+.settings-bar div{
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.settings-bar-inner{
+    width: var(--inner-width);
+}
+
+.circle{
+    border-radius: 100%;
+}
+
+.start{
+    width: var(--start-button-width);
+    height: var(--start-button-width);
+    background-color: var(--start-button-color);
+}
+
+.center-start{
+    padding-top: 5px;
+}
+.padding-start-icon{
+    padding-left: 5px;
+}
+
+.small-icons{
+    padding-top: 30px;
+    padding-right: 9px;
+    padding-left: 9px;
+}
+
+.epoch{
+    width: fit-content;
+    padding-top: 10px;
+}
+.epoch div{
+    margin-top: 0;
+}
+
+.select-input{
+    width: fit-content;
+    padding-top: 10px;
+}
+
+.select-input select{
+    margin-top: 12px;
+    width: var(--select-width);
+    background-color: var(--setting-bar-color);
+    height: 22px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom-width: 2px;
+    border-radius: 2px;
+    border-color: var(--background-color);
+}
+
+
+.select-input-error{
+    margin-top: 12px;
+    width: var(--select-error-width);
+    background-color: var(--background-color);
+    height: 22px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom-width: 2px;
+    border-radius: 2px;
+    border-color: var(--setting-bar-color);
+}
+
+.error div{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.stats{
+    width: var(--inner-width);
+    margin-top: var(--stats-margin-top);
+}
+
+.lines{
+    width: var(--lines-width);
+    height: var(--lines-hight);
+    background-color: var(--lines-color);
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px;
+}
+
+.hidden{
+    display: none;
+}
